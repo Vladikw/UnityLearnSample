@@ -6,7 +6,12 @@ using UnityEngine;
 [HelpURL("https://docs.google.com/document/d/1Cmm__cbik5J8aHAI6PPaAUmEMF3wAcNo3rpgzsYPzDM/edit?usp=sharing")]
 public class TransparentModule : MonoBehaviour
 {
-    private float changeSpeed;
+    [Header("Transparency Settings")]
+
+    [SerializeField]
+    [Tooltip("Скорость изменения прозрачности")]
+    [Range(0.1f, 5f)]
+    private float changeSpeed = 1f;
 
     private float defaultAlpha;
     private Material mat;
@@ -19,6 +24,7 @@ public class TransparentModule : MonoBehaviour
         toDefault = false;
     }
 
+    [ContextMenu("Activate Transparent Module")]
     public void ActivateModule()
     {
         float target = toDefault ? defaultAlpha : 0;

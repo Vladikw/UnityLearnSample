@@ -4,9 +4,16 @@ using UnityEngine;
 [HelpURL("https://docs.google.com/document/d/1rdTEVSrCcYOjqTJcFCHj46RvnbdJhmQUb3gHMDhVftI/edit?usp=sharing")]
 public class ScalerModule : MonoBehaviour
 {
-    private Vector3 targetScale = new Vector3(2,2,2);
+    [Header("Scale Settings")]
 
-    private float changeSpeed;
+    [SerializeField]
+    [Tooltip("Целевой масштаб объекта")]
+    private Vector3 targetScale = new Vector3(2, 2, 2);
+
+    [SerializeField]
+    [Range(0.1f, 10f)]
+    [Tooltip("Скорость изменения масштаба")]
+    private float changeSpeed = 2f;
 
     private Vector3 defaultScale;
     private Transform myTransform;
@@ -19,6 +26,7 @@ public class ScalerModule : MonoBehaviour
         toDefault = false;
     }
 
+    [ContextMenu("Activate Scaler Module")]
     public void ActivateModule()
     {
         Vector3 target = toDefault ? defaultScale : targetScale;
