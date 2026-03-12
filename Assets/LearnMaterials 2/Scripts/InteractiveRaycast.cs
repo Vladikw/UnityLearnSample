@@ -13,7 +13,7 @@ public class InteractiveRaycast : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 // Клик по плоскости с тегом InteractivePlane
-                if (hit.collider.CompareTag("InteractivePlane"))
+                if (hit.collider.gameObject.name == "InteractivePlane")
                 {
                     Vector3 spawnPos = hit.point + hit.normal * 0.5f;
                     Instantiate(prefab, spawnPos, Quaternion.identity);
